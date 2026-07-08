@@ -9,11 +9,12 @@
 
     <h2>Registration List</h2>
 
- <a href="/registrations/create">Add Registration</a>
+    <a href="/registrations/create">Add Registration</a>
 
-<br><br>
+    <br><br>
 
     <table border="1" cellpadding="10">
+
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -21,9 +22,11 @@
             <th>Phone</th>
             <th>Department</th>
             <th>Semester</th>
+            <th>Action</th>
         </tr>
 
         @each(registration in registrations)
+
         <tr>
             <td>{{ registration.id }}</td>
             <td>{{ registration.name }}</td>
@@ -31,8 +34,16 @@
             <td>{{ registration.phone }}</td>
             <td>{{ registration.department }}</td>
             <td>{{ registration.semester }}</td>
+
+            <td>
+                <a href="/registrations/{{ registration.id }}/edit">Edit</a> |
+                <a href="/registrations/{{ registration.id }}/delete">Delete</a>
+            </td>
+
         </tr>
+
         @end
+
     </table>
 
 </body>

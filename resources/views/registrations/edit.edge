@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Registration</title>
+</head>
+
+<body>
+
+<h2>Edit Registration</h2>
+
+<form action="/registrations/{{ registration.id }}/update" method="POST">
+
+    <label>Name</label><br>
+    <input type="text" name="name" value="{{ registration.name }}"><br><br>
+
+    <label>Email</label><br>
+    <input type="email" name="email" value="{{ registration.email }}"><br><br>
+
+    <label>Phone</label><br>
+    <input type="text" name="phone" value="{{ registration.phone }}"><br><br>
+
+    <label>Department</label><br>
+    <input type="text" name="department" value="{{ registration.department }}"><br><br>
+
+    <label>Semester</label><br>
+    <input type="number" name="semester" value="{{ registration.semester }}"><br><br>
+
+    <button type="submit">Update</button>
+
+</form>
+
+<br>
+
+<a href="/registrations">Back</a>
+
+</body>
+
+</html>

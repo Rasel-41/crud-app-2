@@ -27,5 +27,37 @@ export default class RegistrationsController {
 
     return response.redirect('/registrations')
   }
+  async edit({ params, view }: HttpContext) {
+
+  const registration = await Registration.findOrFail(params.id)
+
+  return view.render('registrations/edit', {
+    registration,
+  })
+}
+
+async update({ params, request, response }: HttpContext) {
+
+  const registration = await Registration.findOrFail(params.id)
+
+  registration.name = request.input('name')
+  registration.email = request.input('email')
+  registration.phone = request.input('phone')
+  registration.department = request.input('department')
+  registration.semester = request.input('semester')
+
+  await registration.save()
+
+  return response.redirect('/registrations')
+}
+
+async destroy({ params, response }: HttpContext) {
+
+  const registration = await Registration.findOrFail(params.id)
+
+  await registration.delete()
+
+  return response.redirect('/registrations')
+}
 
 }
